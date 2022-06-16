@@ -8,27 +8,56 @@ import '../home/home_widget.dart';
 import '../tmenu/tmenu_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TticketWidget extends StatefulWidget {
-  const TticketWidget({Key key}) : super(key: key);
+  const TticketWidget({
+    Key key,
+    this.statusFindDriver,
+    this.amountSuspend,
+  }) : super(key: key);
+
+  final String statusFindDriver;
+  final String amountSuspend;
 
   @override
   _TticketWidgetState createState() => _TticketWidgetState();
 }
 
 class _TticketWidgetState extends State<TticketWidget> {
+  ApiCallResponse issuedreturn;
   String dropDown1Value;
   String dropDown22Value;
   TextEditingController officecodeController;
   TextEditingController platenumController;
   TextEditingController remarkController;
-  ApiCallResponse issuedreturn;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      if ((widget.statusFindDriver) == 'suspended') {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Driver is currently suspended'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
+
     officecodeController = TextEditingController();
     platenumController = TextEditingController();
     remarkController = TextEditingController();
@@ -587,7 +616,7 @@ class _TticketWidgetState extends State<TticketWidget> {
                                               'Addis Ababa',
                                               'Bahir Dar',
                                               'dese'
-                                            ].toList(),
+                                            ],
                                             onChanged: (val) => setState(
                                                 () => dropDown1Value = val),
                                             width: 190,
@@ -682,8 +711,15 @@ class _TticketWidgetState extends State<TticketWidget> {
                                           child: FlutterFlowDropDown(
                                             initialOption: dropDown22Value ??=
                                                 '1',
-                                            options:
-                                                ['1', '2', '3', '4'].toList(),
+                                            options: [
+                                              '1',
+                                              '2',
+                                              '3',
+                                              '4',
+                                              '5',
+                                              '6',
+                                              '7'
+                                            ],
                                             onChanged: (val) => setState(
                                                 () => dropDown22Value = val),
                                             width: 190,
@@ -1059,12 +1095,9 @@ class _TticketWidgetState extends State<TticketWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         issuedreturn = await IssueticketCall.call(
-                          licenseId: getJsonField(
-                            FFAppState().ticketdata,
-                            r'''$.driverInfo.ID''',
-                          ).toString(),
-                          date: dateTimeFormat('yMd', getCurrentTimestamp),
-                          time: dateTimeFormat('jm', getCurrentTimestamp),
+                          licenseId: FFAppState().tmpSearch,
+                          date: dateTimeFormat('d/M/y', getCurrentTimestamp),
+                          time: dateTimeFormat('Hm', getCurrentTimestamp),
                           location: dropDown1Value,
                           offenceLevel: dropDown22Value,
                           offenceCode: officecodeController.text,
@@ -1101,8 +1134,8 @@ class _TticketWidgetState extends State<TticketWidget> {
                             builder: (alertDialogContext) {
                               return AlertDialog(
                                 title: Text('Error'),
-                                content: Text(
-                                    'Oops something went wrong ! ry again'),
+                                content:
+                                    Text('Driver didn\'t pay current penality'),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>

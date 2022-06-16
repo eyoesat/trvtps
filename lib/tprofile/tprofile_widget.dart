@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TprofileWidget extends StatefulWidget {
@@ -12,17 +13,22 @@ class TprofileWidget extends StatefulWidget {
 }
 
 class _TprofileWidgetState extends State<TprofileWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController textFieldLicenseIdController;
   TextEditingController textFieldNameController;
   TextEditingController textFieldStatusController;
   TextEditingController textFieldMedicalRecordController;
   TextEditingController textFieldSexController;
   TextEditingController textFieldLicenseRegionController;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      await launchURL('');
+    });
+
     textFieldLicenseIdController = TextEditingController(
         text: random_data.randomString(
       1,

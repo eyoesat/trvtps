@@ -4,19 +4,36 @@ import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
-class LoginApiCall {
+class FinddriverCall {
   static Future<ApiCallResponse> call({
-    String username = '',
-    String password = '',
+    String licenseId = '',
+    String xAccessToken = '',
   }) {
     return ApiManager.instance.makeApiCall(
-      callName: 'loginApi',
-      apiUrl: 'etmilestone.com/ts/driver/login',
+      callName: 'finddriver',
+      apiUrl: 'etmilestone.com/ts/officer/findDriver',
       callType: ApiCallType.GET,
       headers: {},
       params: {
-        'username': username,
-        'password': password,
+        'license_id': licenseId,
+        'x_access_token': xAccessToken,
+      },
+      returnBody: true,
+    );
+  }
+}
+
+class GetrecordsCall {
+  static Future<ApiCallResponse> call({
+    String xAccessToken = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getrecords',
+      apiUrl: 'http://etmilestone.com/ts/driver/getrecord',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {
+        'x_access_token': xAccessToken,
       },
       returnBody: true,
     );
@@ -56,18 +73,35 @@ class IssueticketCall {
   }
 }
 
-class FinddriverCall {
+class LoginApiCall {
   static Future<ApiCallResponse> call({
-    String licenseId = '',
-    String xAccessToken = '',
+    String username = '',
+    String password = '',
   }) {
     return ApiManager.instance.makeApiCall(
-      callName: 'finddriver',
-      apiUrl: 'etmilestone.com/ts/officer/findDriver',
+      callName: 'loginApi',
+      apiUrl: 'etmilestone.com/ts/driver/login',
       callType: ApiCallType.GET,
       headers: {},
       params: {
-        'license_id': licenseId,
+        'username': username,
+        'password': password,
+      },
+      returnBody: true,
+    );
+  }
+}
+
+class PaypenalityCall {
+  static Future<ApiCallResponse> call({
+    String xAccessToken = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'paypenality',
+      apiUrl: 'https://etmilestone.com/ts/driver/pay',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {
         'x_access_token': xAccessToken,
       },
       returnBody: true,
@@ -75,17 +109,19 @@ class FinddriverCall {
   }
 }
 
-class GetrecordsCall {
+class SearchPastCall {
   static Future<ApiCallResponse> call({
     String xAccessToken = '',
+    String licenseId = '',
   }) {
     return ApiManager.instance.makeApiCall(
-      callName: 'getrecords',
-      apiUrl: 'http://etmilestone.com/ts/driver/getrecord',
+      callName: 'searchPast ',
+      apiUrl: 'etmilestone.com/ts/officer/getrecord',
       callType: ApiCallType.GET,
       headers: {},
       params: {
         'x_access_token': xAccessToken,
+        'license_id': licenseId,
       },
       returnBody: true,
     );

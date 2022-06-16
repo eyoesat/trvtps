@@ -1,4 +1,4 @@
-package com.flutterflow.trvptsduplicate
+package com.mycompany.trvtps
 
 import io.flutter.embedding.android.FlutterActivity
 

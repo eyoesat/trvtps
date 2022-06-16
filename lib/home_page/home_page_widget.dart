@@ -19,13 +19,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
       await Navigator.pushAndRemoveUntil(
         context,
         PageTransition(
-          type: PageTransitionType.fade,
-          duration: Duration(milliseconds: 3000),
-          reverseDuration: Duration(milliseconds: 3000),
+          type: PageTransitionType.bottomToTop,
+          duration: Duration(milliseconds: 2000),
+          reverseDuration: Duration(milliseconds: 2000),
           child: HomeWidget(),
         ),
         (r) => false,

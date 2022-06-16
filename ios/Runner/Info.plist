@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>trvpts duplicate</string>
+	<string>trvtps</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>trvpts duplicate</string>
+	<string>trvtps</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -21,7 +21,19 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.120268763501-fjn5fihapl37lha8qdhbvfa26bmgk9sj</string>
+                
+            </array>
+        </dict>
 
+    </array>
 
 
 	<key>CFBundleVersion</key>
@@ -29,7 +41,8 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>In order to search nearby, this app requires access to your current location.</string>
 
 
 	<key>UILaunchStoryboardName</key>

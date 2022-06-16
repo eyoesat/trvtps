@@ -80,7 +80,7 @@ class _StatusWidgetState extends State<StatusWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 300,
+                    height: 200,
                     decoration: BoxDecoration(
                       color: Color(0xFF1A1F24),
                       border: Border.all(
@@ -94,31 +94,6 @@ class _StatusWidgetState extends State<StatusWidget>
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 2, 2, 2),
-                                  child: Container(
-                                    width: 60,
-                                    height: 60,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.asset(
-                                      'assets/images/UI_avatar_2@3x.png',
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -127,42 +102,51 @@ class _StatusWidgetState extends State<StatusWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 4, 0, 0),
-                                      child: Text(
-                                        'eden gebremariam',
-                                        style: FlutterFlowTheme.of(context)
-                                            .title1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF939393),
-                                            ),
-                                      ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          getJsonField(
+                                            FFAppState().userdata,
+                                            r'''$.userData.first_name''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.white,
+                                                fontSize: 19,
+                                              ),
+                                        ),
+                                        Text(
+                                          getJsonField(
+                                            FFAppState().userdata,
+                                            r'''$.userData.middle_name''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Colors.white,
+                                                fontSize: 19,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        '03556727',
+                                        getJsonField(
+                                          FFAppState().userdata,
+                                          r'''$.userData.username''',
+                                        ).toString(),
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
                                               fontFamily: 'Poppins',
-                                              color: Color(0xFF939393),
-                                            ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 4, 0, 0),
-                                      child: Text(
-                                        'penality count -16',
-                                        style: FlutterFlowTheme.of(context)
-                                            .title1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFF939393),
+                                              color: Colors.white,
+                                              fontSize: 19,
                                             ),
                                       ),
                                     ),

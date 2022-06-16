@@ -117,29 +117,6 @@ class _OffenceCodeWidgetState extends State<OffenceCodeWidget> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 4),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
-                              child: Text(
-                                'The Road Transport Traffic Control Council of\nMinisters Regulation No.208/2011 is hereby amended\nas follows:\n1/ sub-article (12) of Article 2 of the Regulation is\ndeleted and replaced by the following new subarticle (12) and other new sub-articles (13) and \n\nThe Road Transport Traffic Control Council of\nMinisters Regulation No.208/2011 is hereby amended\nas follows:\n1/ sub-article (12) of Article 2 of the Regulation is\ndeleted and replaced by the following new subarticle (12) and other new sub-articles (13) and \nThe Road Transport Traffic Control Council of\nMinisters Regulation No.208/2011 is hereby amended\nas follows:\n\n',
-                                textAlign: TextAlign.start,
-                                style: GoogleFonts.getFont(
-                                  'Lexend Deca',
-                                  color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ],

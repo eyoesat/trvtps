@@ -1,6 +1,6 @@
 {
-    "name": "trvpts duplicate",
-    "short_name": "trvpts duplicate",
+    "name": "trvtps",
+    "short_name": "trvtps",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
